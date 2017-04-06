@@ -17,11 +17,29 @@
             if(Number.isInteger(daysOrOptions)) {
                 opts = {expires: daysOrOptions};
             }
+
+            try {
+              var result = JSON.stringify(value);
+              if (/^[\{\[]/.test(result)) {
+                value = result;
+              }
+            } catch (e) {}
+
             return Cookie.set(name, value, opts);
         },
 
         get: function (name) {
             return Cookie.get(name);
+        },
+
+        getJSON: function (name) {
+            var cookie = Cookie.get(name);
+
+            try {
+              cookie = JSON.parse(cookie);
+            } catch (e) {}
+
+            return cookie;
         },
 
         delete: function (name, options) {

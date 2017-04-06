@@ -9,6 +9,7 @@ describe('VueCookie', function(){
         this.cookieValue = 'test-value';
         this.cookieKey = 'test-cookie';
         this.cookieDomain = 'localhost';
+        this.cookieValueObject= {foo: 'bard'};
     });
 
     it('Should set and retrieve a Cookie with given value', function(){
@@ -42,6 +43,14 @@ describe('VueCookie', function(){
 
         expect(Vue.cookie.get(this.cookieKey))
             .toBe(null);
+    });
+
+    it('Should set and retrieve a object with given value', function(){
+
+        Vue.cookie.set(this.cookieKey, this.cookieValueObject, 1);
+
+        expect(Vue.cookie.getJSON(this.cookieKey))
+            .toBe(this.cookieValueObject);
     });
 
 
