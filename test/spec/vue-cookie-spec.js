@@ -50,7 +50,7 @@ describe('VueCookie', function(){
         Vue.cookie.set(this.cookieKey, this.cookieValueObject, 1);
 
         expect(Vue.cookie.getJSON(this.cookieKey))
-            .toBe(this.cookieValueObject);
+            .toEqual(this.cookieValueObject);
     });
 
 
