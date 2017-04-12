@@ -47,9 +47,9 @@ describe('VueCookie', function(){
 
     it('Should set and retrieve a object with given value', function(){
 
-        Vue.cookie.set(this.cookieKey, this.cookieValueObject, 1);
+        Vue.cookie.setObject(this.cookieKey, this.cookieValueObject, 1);
 
-        expect(Vue.cookie.getJSON(this.cookieKey))
+        expect(Vue.cookie.getObject(this.cookieKey))
             .toEqual(this.cookieValueObject);
     });
 

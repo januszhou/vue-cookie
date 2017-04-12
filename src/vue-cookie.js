@@ -18,25 +18,26 @@
                 opts = {expires: daysOrOptions};
             }
 
-            try {
-              var result = JSON.stringify(value);
-              if (/^[\{\[]/.test(result)) {
-                value = result;
-              }
-            } catch (e) {}
-
             return Cookie.set(name, value, opts);
         },
+        setObject: function(name, value, daysOrOptions) {
+            try {
+                var result = JSON.stringify(value);
+                if (/^[\{\[]/.test(result)) {
+                    value = result;
+                }
+            } catch (e) {}
 
+            return this.set(name, value, opts);
+        },
         get: function (name) {
             return Cookie.get(name);
         },
-
-        getJSON: function (name) {
-            var cookie = Cookie.get(name);
+        getObject: function (name) {
+            var cookie = this.get(name);
 
             try {
-              cookie = JSON.parse(cookie);
+                cookie = JSON.parse(cookie);
             } catch (e) {}
 
             return cookie;
