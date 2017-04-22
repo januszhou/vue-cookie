@@ -28,7 +28,7 @@
                 }
             } catch (e) {}
 
-            return this.set(name, value, opts);
+            return this.set(name, value, daysOrOptions);
         },
         get: function (name) {
             return Cookie.get(name);
